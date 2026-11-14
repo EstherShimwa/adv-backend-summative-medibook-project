@@ -1,0 +1,39 @@
+// Paste into https://dbdiagram.io to edit the diagram visually.
+Project medibook { database_type: 'MySQL' }
+
+Table patients {
+  id int [pk, increment, note: 'INT UNSIGNED']
+  full_name varchar(100) [not null, note: 'CHECK length >= 2']
+  email varchar(255) [not null, unique, note: 'CHECK format']
+  phone varchar(20) [not null]
+  created_at datetime [not null, default: `CURRENT_TIMESTAMP`]
+}
+
+Table doctors {
+  id int [pk, increment, note: 'INT UNSIGNED']
+  full_name varchar(100) [not null]
+  specialty varchar(100) [not null]
+  consultation_fee decimal(10,2) [not null, note: 'CHECK >= 0']
+  room varchar(10) [not null]
+  created_at datetime [not null, default: `CURRENT_TIMESTAMP`]
+}
+
+Table appointments {
+  id int [pk, increment, note: 'INT UNSIGNED']
+  patient_id int [not null, ref: > patients.id]
+  doctor_id int [not null, ref: > doctors.id]
+  appt_datetime datetime [not null, note: 'CHECK minute IN (0,30), second = 0, time 09:00-16:30']
+  amount_paid decimal(10,2) [not null, note: 'CHECK >= 0']
+  status "ENUM('BOOKED','CANCELLED')" [not null, default: 'BOOKED']
+  booked_on datetime [not null, default: `CURRENT_TIMESTAMP`]
+  cancelled_at datetime [null]
+  refund_percent tinyint [null, note: 'CHECK IN (0, 50, 100)']
+  refund_amount decimal(10,2) [null, note: 'CHECK 0 <= refund_amount <= amount_paid']
+  active_slot datetime [note: 'GENERATED: appt_datetime if BOOKED, else NULL']
+
+  indexes {
+    (doctor_id, active_slot) [unique, name: 'uq_doctor_active_slot', note: 'a doctor cannot have two appointments at the same date/time']
+    (patient_id, active_slot) [unique, name: 'uq_patient_active_slot']
+    (doctor_id, appt_datetime) [name: 'idx_appointments_doctor_datetime']
+  }
+}

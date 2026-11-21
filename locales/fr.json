@@ -11,6 +11,13 @@
     "Que changeriez-vous dans la manière dont ce cours a été enseigné ou évalué ?",
     "Comment comptez-vous appliquer ce que vous avez appris dans ce cours à l'avenir ?"
   ],
+  "answers": [
+  "La concurrence a été le sujet le plus difficile. J'avais du mal à voir comment deux requêtes arrivant en même temps pouvaient toutes deux passer une vérification et briser une règle. Cela a pris sens quand j'ai compris que la base de données doit appliquer la règle elle-même, avec un index UNIQUE et un verrou de ligne.",
+  "Les transactions n'ont pris sens qu'en construisant l'annulation. Le remboursement et le changement de statut doivent réussir ou échouer ensemble, et les écrire dans un seul UPDATE à l'intérieur d'une transaction m'a fait comprendre.",
+  "Avant, je vérifiais les règles seulement en JavaScript. Maintenant je les mets aussi dans la base de données, avec des contraintes, et je conçois d'abord les tables pour que chaque fait soit stocké une seule fois.",
+  "J'ajouterais plus de pratique guidée sur la concurrence et les files d'attente avant le projet, et un court exemple détaillé d'une transaction avec annulation (rollback).",
+  "Je compte utiliser ces compétences dans mes prochains projets backend, surtout la validation, la gestion des erreurs et le fait de garder la base de données comme source de vérité."
+],
   "submit": "Envoyer mes réponses",
   "thanks": "Merci pour vos commentaires !",
   "switchLanguage": "English version"

@@ -11,6 +11,13 @@
     "What would you improve about how this course was taught or assessed?",
     "How do you plan to apply what you learned in this course going forward?"
   ],
+  "answers": [
+  "Concurrency was the hardest topic. I found it difficult to see how two requests arriving at the same moment could both pass a check and break a rule. It made sense once I understood that the database has to enforce the rule itself, with a UNIQUE index and a row lock.",
+  "Transactions only made sense once I built the cancellation. The refund and the status change have to succeed or fail together, and writing it in one UPDATE inside a transaction made that click.",
+  "I used to check rules only in JavaScript. Now I put rules in the database too, with constraints, and I design the tables first so each fact is stored once.",
+  "I would add more guided practice on concurrency and queues before the assignment, and a short worked example of a transaction with a rollback.",
+  "I plan to use these skills on the backend projects I build next, especially validation, error handling, and keeping the database as the source of truth."
+],
   "submit": "Submit feedback",
   "thanks": "Thank you for your feedback!",
   "switchLanguage": "Version française"

@@ -1,4 +1,5 @@
 # MediBook: Clinic Appointment Booking Backend
+Video walkthrough: (https://youtu.be/682mqK_j-tg)
 
 A backend for booking doctor appointments at a community clinic, built with **Node.js, Express, MySQL (mysql2, parameterized queries only, no ORM) and Redis**.
 

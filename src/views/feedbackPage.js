@@ -14,7 +14,7 @@ function renderFeedbackPage({ lang, otherLang, text, formattedDate }) {
       (question, i) => `
       <div class="question">
         <label for="q${i + 1}">${i + 1}. ${escapeHtml(question)}</label>
-        <textarea id="q${i + 1}" name="q${i + 1}" rows="4" required></textarea>
+        <textarea id="q${i + 1}" name="q${i + 1}" rows="6" required>${escapeHtml((text.answers || [])[i] || '')}</textarea>
       </div>`
     )
     .join('');
